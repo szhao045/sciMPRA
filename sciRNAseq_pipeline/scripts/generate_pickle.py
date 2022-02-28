@@ -1,5 +1,8 @@
-RT_bc_file = "/net/shendure/vol1/home/cao1025/analysis_script/sci3/RT_384_bc.txt"
-lig_bc_file = "/net/shendure/vol1/home/cao1025/analysis_script/sci3/ligation_384_bc.txt"
+import os.path
+RT_bc_file = sys.argv[1]
+RT_base = os.path.dirname(RT_bc_file) + "/" + os.path.basename(RT_bc_file).split(".")[0]
+lig_bc_file = sys.argv[2]
+lig_base = os.path.dirname(lig_bc_file) + "/" + os.path.basename(lig_bc_file).split(".")[0]
 
 import itertools
 from Levenshtein import distance
@@ -51,7 +54,7 @@ all_seq_match = list(map(lambda x: find_bc(x, RT), all_seq_10bp))
 all_seq_dic = dict(zip(all_seq_10bp, all_seq_match))
 # save the dictionary into a file
 import pickle
-pickle_out = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/RT_384_bc.pickle","wb")
+pickle_out = open(RT_base + ".pickle", "wb")
 pickle.dump(all_seq_dic, pickle_out)
 pickle_out.close()
 print("Generating the dictionary for ligation barcodes...")
@@ -63,22 +66,22 @@ lib_bc_addC = list(map(lambda x: add_c(x), lig))
 lib_dic = dict(zip(lib_bc_addC, lig))
 all_seq_match = list(map(lambda x: find_lig_bc(find_bc(x, lib_bc_addC), lib_dic), all_seq_10bp))
 all_seq_dic = dict(zip(all_seq_10bp, all_seq_match))
-pickle_out = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/lig_384_bc.pickle","wb")
+pickle_out = open(lig_base + ".pickle","wb")
 pickle.dump(all_seq_dic, pickle_out)
 pickle_out.close()
 
 # generate the simplified dictionary
-pickle_in = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/lig_384_bc.pickle", "rb")
+pickle_in = open(lig_base + ".pickle", "rb")
 lig_dic = pickle.load(pickle_in)
 lig_filter = {k: v for k, v in lig_dic.items() if v != ""}
-pickle_out = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/lig_384_bc.pickle2", "wb")
+pickle_out = open(lig_base + ".pickle2", "wb")
 pickle.dump(lig_filter, pickle_out, 2)
 pickle_in.close()
 pickle_out.close()
 
-pickle_in = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/RT_384_bc.pickle", "rb")
+pickle_in = open(RT_base + ".pickle", "rb")
 RT_dic = pickle.load(pickle_in)
 RT_filter = {k: v for k, v in RT_dic.items() if v != ""}
-pickle_out = open("/net/shendure/vol1/home/cao1025/analysis_script/sci3/RT_384_bc.pickle2", "wb")
+pickle_out = open(RT_base + ".pickle2", "wb")
 pickle.dump(RT_filter, pickle_out, 2)
 pickle_in.close()
