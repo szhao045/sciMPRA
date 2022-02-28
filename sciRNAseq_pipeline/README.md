@@ -24,7 +24,7 @@ This pipeline is adapted from Junyue Cao's sci-RNA-seq3 pipeline.
 
 ## Create conda env
 ```
-create env -n sciMPRA
+conda env create -f sciMPRA.yml
 ```
 
 
