@@ -5,6 +5,7 @@ Created on Tue Apr  5 22:16:54 2016
 """
 
 import subprocess
+import itertools
 import sys
 from Levenshtein import distance
 import gzip
@@ -75,6 +76,7 @@ def UMI_attach_read2_barcode_list(sample, input_folder, output_folder, ligation_
           %(sample, total_line, filtered_line, float(filtered_line) / float(total_line)))
 
 # this function accept an input folder and a output folder and then generate the output file with the index
+
 def attach_UMI_files(input_folder, sampleID, output_folder, ligation_barcode_file, RT_barcode_file, core):
     
     init_message = '''
