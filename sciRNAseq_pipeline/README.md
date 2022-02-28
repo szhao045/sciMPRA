@@ -36,7 +36,7 @@ You can skip this step if you already have lig_384_bc.pickle2 and RT_384_bc.pick
 
 ```
 conda activate sciMPRA
-python3 scripts/generate_pickle.py [ligation barcode txt file directory] [RT barcode txt file directory]
+python3 scripts/generate_pickle.py [RT barcode txt file directory] [ligation barcode txt file directory]
 ```
 
 ## Run sci_main.sh (barcode dissection + STAR mapping + deduplication + gene counting)
