@@ -1,4 +1,5 @@
 import os.path
+import sys
 RT_bc_file = sys.argv[1]
 RT_base = os.path.dirname(RT_bc_file) + "/" + os.path.basename(RT_bc_file).split(".")[0]
 lig_bc_file = sys.argv[2]
