@@ -26,7 +26,7 @@ ligation_barcode=$script_folder/lig_384_bc.pickle2
 barcodes=$script_folder//combined_384_bc.txt
 
 # define the core number for parallele processing 
-#core=4
+core=4
 #samtools_core=4
 # define the location of the R script for multi-core processing
 #R_script=$script_folder/sci3_bash_input_ID_output_core.R
@@ -90,3 +90,8 @@ echo "Barcode transformed and UMI attached."
 # here we find quads for each sample with the slower python script 
 # TODO: implement the faster GO script for finding quads.
 echo "Find quads ..."
+UMI_attached_R2=$all_output_folder/UMI_attach
+# Use the original R1 fastq file
+R1_folder = $input_folder
+output_folder = $all_output_folder/quads
+python3 ./script/find_quads.py $UMI_attached_R2 $R1_folder $output_folder $sample_ID $core
