@@ -46,7 +46,7 @@ python3 scripts/generate_pickle.py [RT barcode txt file directory] [ligation bar
 2. Check sci3_trim.sh file, make sure you have right path to trim_galore tool. 
 
 ### Run sci_main.sh under sciRNAseq_pipeline/
-1. Write a sbatch file, specify the number of cores you want (should be comparable to core number you write in sci_main.sh). The command to run sci_main.sh is:
+1. Write a sbatch file, specify memory (at least 32GB) and the number of cores you want (#core should be comparable to #core you write in sci_main.sh). The command to run sci_main.sh is:
 ```
 bash sci_main.sh
 ```
