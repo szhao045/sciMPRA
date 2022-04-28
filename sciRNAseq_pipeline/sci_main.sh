@@ -78,7 +78,7 @@ output_folder=$all_output_folder/UMI_attach
 script=$script_path/UMI_barcode_attach_gzipped_with_dic.py
 # simplify file names
 #echo "Changing the name of the fastq files..."
-for sample in $(cat $sample_ID); do echo changing name $sample; mv $input_folder/*$sample*1.fastq.gz $input_folder/$sample.R1.fastq.gz; mv $input_folder/*$sample*2.fastq.gz $input_folder/$sample.R2.fastq.gz; done
+for sample in $(cat $sample_ID); do echo changing name $sample; mv $input_folder/*$sample*R1*.fastq.gz $input_folder/$sample.R1.fastq.gz; mv $input_folder/*$sample*R2*.fastq.gz $input_folder/$sample.R2.fastq.gz; done
 
 echo "Attaching barcode and UMI...."
 mkdir -p $output_folder
