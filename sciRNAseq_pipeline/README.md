@@ -2,15 +2,14 @@
 This pipeline is adapted from Junyue Cao's sci-RNA-seq3 pipeline. 
 ## Dependencies
 1. miniconda3 (locally installed)
-2. fastqc (module load)
-3. R (module load)
+2. fastqc (spack load)
+3. R (spack load)
     * BiocParallelS
     * tidyverse
     * data.table
     * Matrix
-4. samtools/1.12 (module load)
-5. star/2.5.2b (module load)
-6. cutadapt/1.9.1 (module load)
+4. samtools/1.12 (spack load)
+5. star/2.5.2b (spack load)
 7. trim_galore (locally installed)
     * Note: copy-paste the path of your local trim_galore into scirpts/sci3_trim.sh
 
@@ -24,7 +23,7 @@ This pipeline is adapted from Junyue Cao's sci-RNA-seq3 pipeline.
 
 ## Create conda env
 ```
-create env -n sciMPRA
+conda env create -f sciMPRA.yml
 ```
 
 
@@ -36,7 +35,7 @@ You can skip this step if you already have lig_384_bc.pickle2 and RT_384_bc.pick
 
 ```
 conda activate sciMPRA
-python3 scripts/generate_pickle.py [ligation barcode txt file directory] [RT barcode txt file directory]
+python3 scripts/generate_pickle.py [RT barcode txt file directory] [ligation barcode txt file directory]
 ```
 
 ## Run sci_main.sh (barcode dissection + STAR mapping + deduplication + gene counting)
@@ -46,7 +45,7 @@ python3 scripts/generate_pickle.py [ligation barcode txt file directory] [RT bar
 2. Check sci3_trim.sh file, make sure you have right path to trim_galore tool. 
 
 ### Run sci_main.sh under sciRNAseq_pipeline/
-1. Write a sbatch file, specify the number of cores you want (should be comparable to core number you write in sci_main.sh). The command to run sci_main.sh is:
+1. Write a sbatch file, specify memory (at least 32GB) and the number of cores you want (#core should be comparable to #core you write in sci_main.sh). The command to run sci_main.sh is:
 ```
 bash sci_main.sh
 ```
