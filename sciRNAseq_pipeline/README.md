@@ -2,15 +2,14 @@
 This pipeline is adapted from Junyue Cao's sci-RNA-seq3 pipeline. 
 ## Dependencies
 1. miniconda3 (locally installed)
-2. fastqc (module load)
-3. R (module load)
+2. fastqc (spack load)
+3. R (spack load)
     * BiocParallelS
     * tidyverse
     * data.table
     * Matrix
-4. samtools/1.12 (module load)
-5. star/2.5.2b (module load)
-6. cutadapt/1.9.1 (module load)
+4. samtools/1.12 (spack load)
+5. star/2.5.2b (spack load)
 7. trim_galore (locally installed)
     * Note: copy-paste the path of your local trim_galore into scirpts/sci3_trim.sh
 
