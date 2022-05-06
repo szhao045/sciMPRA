@@ -26,6 +26,7 @@ dependencies:
   - xz=5.2.5
   - zlib=1.2.11
   - pip:
+    - cutadapt==4.0
     - cycler==0.11.0
     - fonttools==4.29.1
     - htseq==1.99.2
