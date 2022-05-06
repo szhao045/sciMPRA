@@ -49,13 +49,13 @@ gtf_file="/scratch/bclab/yawei/ref/gtf_reference/mm10/gencode.vM12.chr_patch_hap
 
 
 # load required modules
-spack load samtools/1.12
-spack load star/2.5.2b
+spack load samtools@1.13
+spack load star@2.5.2b
 ### Note star version needs to be compatible with genome index
 spack load fastqc
 # manually install trimgalore in /home/yawei.wu/tools/TrimGalore-0.6.6/trim-galore
 # Note: trimgalore is a wrapper of fastqc and cutadapt
-spack load r
+spack load r@4.1.2
 ### Note: BiocParallel is required in R
 
 # Activate conda environment
